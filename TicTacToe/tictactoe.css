@@ -1,0 +1,17 @@
+
+#gameBoard {
+    padding: 10px;
+    background-color: aqua;
+    border: dashed 1px black;
+}
+
+#playerTurn {
+    padding: 10px;
+    text-align: center;
+    background-color: aqua;
+    border: dashed 1px black;
+}
+
+#rules {
+    display: none;
+}

@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="tictactoe.css">
     <script src="TicTacToe.js"></script>
 </head>
 <body>
@@ -14,12 +15,16 @@
     </header>
 
     <div class="content">
-        <section class="column ">
+        <section class="column">
             <figure id="gameBoard">
-    
+                <table>
+                    <tr><td>..</td><td>..</td><td>..</td></tr>
+                    <tr><td>..</td><td>..</td><td>..</td></tr>
+                    <tr><td>..</td><td>..</td><td>..</td></tr>
+                </table>
             </figure>
             <span>
-                <p>Turn Output</p>
+                <p id="playerTurn">Turn Output</p>
             </span>
         </section>
     
@@ -32,7 +37,7 @@
             </ul>
         </aside>
     
-        <section class="column">
+        <section id="rules" class="column">
             <h2>Game Rules:</h2>
             <p>Lorem Ipsum</p>
         </section>

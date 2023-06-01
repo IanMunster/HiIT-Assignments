@@ -1,0 +1,95 @@
+/* Main Elements */
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+body {
+    font-family: monospace;
+
+}
+
+#pageContainer {
+    position: relative;
+    min-height: 100vh;
+}
+
+header,
+footer {
+    height: 5rem;
+    padding: 10px;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    background: black;
+}
+
+main {
+    padding-bottom: 5rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;    /* Footer height */
+
+}
+
+
+.element {
+    padding: 5px;
+    border-radius: 0 0 25px 25px;
+    background: rgba(100, 100, 100, 0.5);
+}
+
+
+/* Split Columns */
+.column {
+    float: left;
+}
+
+.content::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+section {
+    /* width: 75%; */
+}
+
+aside {
+    width: 25%;
+    padding: 5px;
+    font-style: italic;
+    background-color: lightgray;
+}
+
+/* Headers */
+#Title {
+    font-weight: bold;
+    color: darkred;
+}
+
+h3 {
+    font-weight: bold;
+    color: lightskyblue;
+}
+
+/* Lists */
+aside ul {
+    list-style: none;
+}
+
+ul {
+    font-family: Helvetica, sans-serif;
+    padding-inline-start: 25px;
+}
+
+.item {
+    list-style: circle;
+}
