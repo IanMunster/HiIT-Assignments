@@ -1,5 +1,53 @@
+*, html {
+    margin: 0;
+    padding: 0;
+}
+
 header {
-    background: goldenrod;
     color: white;
     text-align: center;
+    background: goldenrod;
+}
+
+#game {
+    padding: 14px 16px;
+    text-align: center;
+    background: gold;
+    border: 1px solid black;
+}
+
+#randomColourDisplay {
+    margin: 20px auto;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+.pickColour {
+    display: inline-block;
+    width: 75px;
+    height: 75px;
+    background-color: "";
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.pickable {
+    cursor: pointer;
+}
+
+#gameBtn {
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px black;
+    background: goldenrod;
+    border-radius: 25px;
+}
+
+#gameBtn:hover {
+    color: goldenrod;
+    text-shadow: 1px 1px gray;
+    background: white;
+    cursor: pointer;
 }
