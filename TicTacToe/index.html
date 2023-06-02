@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="../main.css">
+    <!-- <link rel="stylesheet" href="../main.css"> -->
     <link rel="stylesheet" href="tictactoe.css">
     <script src="TicTacToe.js"></script>
 </head>
+
 <body>
     <header>
         <h1>Tic Tac Toe</h1>
     </header>
 
-    <div class="content">
-        <section class="column">
+    <main>
+        <section class="game">
             <figure id="gameBoard">
-                <table>
-                    <tr><td>..</td><td>..</td><td>..</td></tr>
-                    <tr><td>..</td><td>..</td><td>..</td></tr>
-                    <tr><td>..</td><td>..</td><td>..</td></tr>
+                <table id="gameCanvas">
                 </table>
             </figure>
             <span>
-                <p id="playerTurn">Turn Output</p>
+                <p id="playerTurn">Turn Player 1</p>
             </span>
         </section>
-    
-        <aside class="column">
+
+        <aside>
             <h3>Option</h3>
             <ul>
                 <li>Restart</li>
@@ -36,16 +35,22 @@
                 <li>...</li>
             </ul>
         </aside>
-    
-        <section id="rules" class="column">
-            <h2>Game Rules:</h2>
-            <p>Lorem Ipsum</p>
-        </section>
-    </div>
 
+        <section id="rules">
+            <h2>Game Rules:</h2>
+            <p> * Script that add interactive Tic Tac Toe to a page. <br>
+                * Based on a TableGrid, each Table Cell has a Click Event <br>
+                * Players can Click one cell each turn, changing the cells content to either a X or an O. <br>
+                * A cell can only be filled with a X or O once per round <br>
+                * If a player can Connect three cells with their symbol, either straight or diagonally that player wins <br>
+                * If all cell are filled, but no three cell connect with the same symbol, the game ends with a tie. <br>
+            </p>
+        </section>
+    </main>
 
     <footer>
         <p>Credit</p>
     </footer>
 </body>
+
 </html>

@@ -1,51 +1,33 @@
 /* Main Elements */
-*,
-html {
+*, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Trebuchet MS', sans-serif;
+
 }
 
 body {
     font-family: monospace;
-
 }
 
-#pageContainer {
-    position: relative;
-    min-height: 100vh;
-}
+/* #pageContainer {} */
 
-header,
-footer {
-    height: 5rem;
+header, footer {
+    /* height: 5rem; */
     padding: 10px;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-align: center;
     color: white;
     background: black;
 }
 
-main {
-    padding-bottom: 5rem;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 5rem;    /* Footer height */
-
-}
-
+/* main {} */
 
 .element {
     padding: 5px;
     border-radius: 0 0 25px 25px;
     background: rgba(100, 100, 100, 0.5);
 }
-
 
 /* Split Columns */
 .column {
@@ -58,9 +40,7 @@ footer {
     display: table;
 }
 
-section {
-    /* width: 75%; */
-}
+/* section {} */
 
 aside {
     width: 25%;

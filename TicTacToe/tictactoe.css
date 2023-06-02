@@ -1,17 +1,89 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', sans-serif;
+}
 
-#gameBoard {
+header, footer {
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    background: #000;
+}
+
+main {
+    background: url(img/paper1280.jpg) no-repeat top center #333;
+    padding: 2% 20%;
+    display: flex;
+}
+
+.game {
+    /* border: 1px solid black; */
+    /* width: 80%; */
+}
+aside {
+    /* border: 1px solid black; */
     padding: 10px;
-    background-color: aqua;
-    border: dashed 1px black;
+    /* width: 20%; */
+}
+#rules {
+    display: none;
+    width: 100%;
+    /* border: 1px solid black; */
 }
 
 #playerTurn {
-    padding: 10px;
+    font-size: larger;
+    font-weight: bolder;
     text-align: center;
-    background-color: aqua;
-    border: dashed 1px black;
 }
 
-#rules {
-    display: none;
+table {
+    border-collapse: collapse;
+    text-align: center;
 }
+
+td {
+    /* padding: 50px; */
+    width: 150px;
+    height: 150px;
+    border: 5px inset black;
+    background: no-repeat center center;
+}
+.pickable {
+    cursor: pointer;
+}
+
+td:first-child {
+    border-left: 0;
+}
+td:last-child {
+    border-right: 0;
+}
+tr:first-child td {
+    border-top: 0;
+}
+tr:last-child td {
+    border-bottom: 0;
+}
+
+/* Laptops */
+@media screen and (max-width: 960px) {
+    main {
+        display: block;
+        padding: 5%;
+    }
+    .game {
+        width: auto;
+    }
+    aside {
+        width: auto;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 720px) {}
+
+/* Smartphones */
+@media screen and (max-width: 420px) {}
