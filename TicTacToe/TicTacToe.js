@@ -35,6 +35,8 @@ var turnCounter = 0;
 let winCondition = [[0, 1, 2], [3, 4, 5], [6, 7, 8],
 [0, 3, 6], [1, 4, 7], [2, 5, 8],
 [0, 4, 8], [2, 4, 6]];
+// Board State
+let BoardState = [];
 
 /** Initialize the Game
  * 
@@ -94,7 +96,7 @@ function checkCell() {
     // If less turns then 5 (i.e a Winning Situation Could've occured)
     if (turnCounter > 5 && turnCounter < 9) {
         // Check the Board for a Win
-        checkBoard();
+        checkBoard(clickedCell.id);
     } else {
         endGame('draw');
     }
@@ -139,7 +141,20 @@ function updateInterface(turn) {
 /**
  * Win Conditions is an Array containing the number of Cell ID in a Array for a win. I.e. Horizontal Positions, Vertical Positions and Diagonal Positions
  */
-function checkBoard() {
+function checkBoard(cellID) {
+    BoardState[cellID]
+
+    for (let winIndex = 0; winIndex < winCondition.length; winIndex++) {
+        const winPossibilities = winCondition[winIndex];
+        for (let posIndex = 0; posIndex < winCondition[0].length; posIndex++) {
+            const winPositions = winCondition[winIndex][posIndex];
+            
+            console.log("winPosition: "+winPositions+" ID "+ cells[winPositions].id);
+            if(cells[winPositions].id == "X"){
+                console.log("POS:" +winPositions+" X");
+            }
+        }
+    }
 }
 
 /**
