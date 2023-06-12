@@ -3,8 +3,9 @@
 window.addEventListener("load", init);
 
 /* And finally we add our event listeners to the restart button */
-//const RestartBtn = document.querySelector('.game--restart').addEventListener('click', handleRestartGame);
-
+let RestartBtn;
+//
+let gameCell;
 /*Here we declare some variables that we will use to track the game state throught the game. */
 /*We will use gameActive to pause the game in case of an end scenario*/
 let gameActive;
@@ -17,7 +18,7 @@ const winningConditions = [ [0, 1, 2], [3, 4, 5], [6, 7, 8],
 
 /*We will store our current game state here, the form of empty strings in an array
  will allow us to easily track played cells and validate the game state later on*/
-let gameState;
+let gameState = ["", "", "", "", "", "", "", "", ""];
 
 /*We store our game status element here to allow us to more easily 
 use it later on */
@@ -26,16 +27,20 @@ let statusDisplay;
 Since we have some dynamic factors in those messages, namely the current player,
 we have declared them as functions, so that the actual message gets created with 
 current data every time we need it.*/
+
+
 const winningMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
-const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 /*We set the inital message to let the players know whose turn it is*/
+const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
+
 
 
 /**
  * 
  */
 function init() {
+    RestartBtn = document.getElementById("restartButton").addEventListener('click', handleRestartGame);
     gameActive = true;
     currentPlayer = "X";
     gameState = ["", "", "", "", "", "", "", "", ""];
@@ -62,18 +67,18 @@ function createBoard() {
             // Add cell to the rows, in the gameboard
             var cell = rows.insertCell(cellIndex);
             // Fill inner of HTML with # of Row and Cell
-            cell.innerHTML = "Row:" + rowIndex + " Cell:" + cellIndex;
+            // cell.innerHTML = "Row:" + rowIndex + " Cell:" + cellIndex;
             // Add Pickable Class
             cell.classList.add('pickable');
             // Attach a Click Event
             cell.addEventListener('click', handleCellClick);
         }
     }
-    // Get all created Cells
-    var cells = document.getElementsByTagName('td');
-    // Give Cells an ID
-    for (let idIndex = 0; idIndex < cells.length; idIndex++) {
-        cells[idIndex].id = idIndex;
+    // Get all created gameCell
+    gameCell = document.getElementsByTagName('td');
+    // Give gameCell an ID
+    for (let idIndex = 0; idIndex < gameCell.length; idIndex++) {
+        gameCell[idIndex].id = idIndex;
     }
 }
 
@@ -110,7 +115,10 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
     /*We update our internal game state to reflect the played move, 
     as well as update the user interface to reflect the played move*/
     gameState[clickedCellIndex] = currentPlayer;
-    clickedCell.innerHTML = currentPlayer;
+    clickedCell.classList.replace("pickable", currentPlayer);
+    // clickedCell.classList.add(currentPlayer);
+    // clickedCell.classList.remove("pickable")
+    //clickedCell.innerHTML = currentPlayer;
 }
 
 
@@ -120,18 +128,35 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
  */
 function handleResultValidation() {
     let roundWon = false;
-    for (let i = 0; i <= 7; i++) {
-        const winCondition = winningConditions[i];
-        let a = gameState[winCondition[0]];
-        let b = gameState[winCondition[1]];
-        let c = gameState[winCondition[2]];
-        if (a === '' || b === '' || c === '') {
-            continue;
+    for (let winIndex = 0; winIndex <= winningConditions.length-1; winIndex++) {
+        const winCondition = winningConditions[winIndex];
+        let winPositions = [];
+        for (let winPos = 0; winPos <= 3; winPos++ ) {
+            winPositions[winPos] = gameState[winCondition[winPos]];
+            if (winPositions[0] !== '' && winPositions[1] !== '' && winPositions[2] !== '' ) {
+                if(winPositions[0] === winPositions [1] && winPositions[0] === winPositions[2]) {
+                    console.log("WIN: "+winPositions);
+                    // BLINK IMAGE CLASS
+                    roundWon = true;
+                    break;
+                }
+            }
         }
-        if (a === b && b === c) {
-            roundWon = true;
-            break
-        }
+
+        
+
+
+        // let winPos0 = gameState[winCondition[0]];
+        // let winPos1 = gameState[winCondition[1]];
+        // let winPos2 = gameState[winCondition[2]];
+        // if (winPos0 === '' || winPos1 === '' || winPos2 === '') {
+        //     continue;
+        // }
+        // if (winPos0 === winPos1 && winPos1 === winPos2) {
+
+        //     roundWon = true;
+        //     break
+        // }
     }
     if (roundWon) {
         statusDisplay.innerHTML = winningMessage();
@@ -169,5 +194,10 @@ function handleRestartGame() {
     currentPlayer = "X";
     gameState = ["", "", "", "", "", "", "", "", ""];
     statusDisplay.innerHTML = currentPlayerTurn();
-    document.getElementsByTagName('td').forEach(cell => cell.innerHTML = "");
+    // For Each?
+    for (let idIndex = 0; idIndex < gameCell.length; idIndex++) {
+        gameCell[idIndex].classList.replace("X", "pickable");
+        gameCell[idIndex].classList.replace("O", "pickable");
+    }
+    
 }

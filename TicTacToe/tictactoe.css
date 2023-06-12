@@ -70,10 +70,10 @@ tr:last-child td {
 .pickable {
     cursor: pointer;
 }
-#X {
+.X {
     background-image: url(img/x-transparant.png);
 }
-#O {
+.O {
     background-image: url(img/o-transparant.png);
 }
 
