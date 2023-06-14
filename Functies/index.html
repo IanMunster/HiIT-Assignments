@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Functions</title>
+    <script src="javascript.js"></script>
+</head>
+<body>
+    <h1>Practice with Functions</h1>
+    <p>value A = 10, value B = 25</p>
+    <button onclick="outputResult(10,25,'+')">Calculate A+B</button>
+    <button onclick="outputResult(10,25,'-')">Calculate A-B</button>
+    <button onclick="outputResult(10,25,'-', true)">Calculate A-B <i>Console Only</i></button>
+    <p>value C = 3, value D = 5</p>
+    <button onclick="outputResult(3,5,'*')">Calculate C*D</button>
+    <p>value E = 6, value F = 4</p>
+    <button onclick="outputResult(6,4,'*')">Calculate E*F</button>
+    <p>Output Value: <b id="calcOutput"></b> <i id="isNegative"></i></p>
+
+
+    <button onclick="outputName('firstName','lastName', ' ')">Display FullName</button>
+    <button onclick="outputName('firstName','lastName', ',')">Display Name by Surname</button>
+    <p>Name: <b id="outputName"></b></p>
+</body>
+</html>
