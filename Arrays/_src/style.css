@@ -1,0 +1,9 @@
+.elementen
+{
+    display : table-cell;
+    border : solid 1px black;
+    width : 150px;
+    height : 30px;
+    vertical-align: middle;
+    text-align: center;
+}
