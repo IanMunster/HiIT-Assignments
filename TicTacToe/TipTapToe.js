@@ -50,7 +50,7 @@ function init() {
 }
 
 
-/**
+/** Create Game Board Function
  * 
  */
 function createBoard() {
