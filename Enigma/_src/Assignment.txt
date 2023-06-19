@@ -39,7 +39,7 @@ Schrijf nu een webapplicatie met behulp van HTML, CSS en JavaScript om tekst, di
     Voeg een veld toe aan de webpagina waarin de gebruiker tekst kan invoeren, dit kan met het <input>-element of <textarea>-element.
     Voeg een button toe aan de webpagina, die ervoor zorgt dat wanneer de gebruiker hierop klikt, de ingegeven tekst wordt gecodeerd naar de juiste coderingstekens, en toon deze op de webpagina.
 
-
+----------------------------------------------------------------------------------------------
 
 Wanneer alles naar behoren werkt voegen we nog wat extra functionaliteit toe.
  We gaan een sleutel toevoegen die bestaat uit een matrix nummer ( 1, 2 of 3 ) en een cel nummer ( 1 t/m 9 ).
