@@ -1,0 +1,79 @@
+Enigma
+https://db.stichtingheldeninit.nl/lessons/11161/
+
+Programmeur JavaScript V2 Enigma
+
+Iedereen is wel bekend met de enigma, de codeermachine die gebruikt werd door de Duitsers in de tweede wereld oorlog om berichten te kunnen coderen. 
+Wij gaan nu onze eigen codeertaal schrijven met behulp van JavaScript.
+Hiervoor gebruiken we 3 blokken, elk met hun eigen matrix nummer. 
+Elke matrix bevat 9 cellen die een letter van het alfabet bevat. 
+Om het gehele alfabet op te kunnen nemen zijn dus minimaal 3 blokken van 9 cellen nodig, de resterende cel gebruiken we voor het spatie-teken. 
+
+Zie Figuur: "matrices.jpg"
+
+Om tekst te kunnen coderen maken we gebruik van het matrix nummer waar de letter zich bevind met de bijbehorende zwarte randen van de cel.
+Het woord “helden” zal als volgt worden gecodeerd:
+
+Zie Figuur: "encrypted_helden.jpg"
+
+Als we de letter “h” opzoeken zien we dat deze in de eerste matrix staat, en de zwarte randen zichtbaar zijn aan de linkerkant, bovenkant en rechterkant.
+Het coderingsteken voor “h” wordt dan als volgt weergegeven.
+h -> 1
+
+De letter “e” staat ook in de eerste matrix, en de zwarte randen zijn aan alle kanten zichtbaar
+e -> 1
+
+De letter “l” staat in matrix 2 met een linkerrand en een onderrand
+l -> 2
+
+Op deze manier kunnen we alle karakters van het alfabet een unieke codering geven.
+
+Schrijf nu een webapplicatie met behulp van HTML, CSS en JavaScript om tekst, die de gebruiker kan invoeren, te coderen en decoderen volgens bovenstaande coderingstabellen.
+
+    Begin met een nieuwe werkomgeving, maak binnen Visual Studio Code een nieuwe folder “Enigma” aan en plaats hier 3 bestanden in, index.html, enigma.css en enigma.js.
+    Zorg nu dat in de webpagina de 3 blokken worden weergegeven met de bijbehorende alfabet tekens. 
+    Voor de blokken kan je het tabel-element <table> gebruiken. 
+    Documentatie hierover kan je hier vinden: https://www.w3schools.com/html/html_tables.asp. 
+    Geef deze tabellen een id of een klassenaam zodat je binnen je javascript code deze elementen kan aanspreken met bijvoorbeeld de functies document.getElementById() of document.getElementsByClassName().
+    Geef elke cel de juiste randen. Hiervoor heb je de eigenschappen borderBottomWidth, borderBottomStyle, borderBottomColor, borderLeftWidth, borderLeftStyle, borderLeftColor etc. nodig.
+    Voeg een veld toe aan de webpagina waarin de gebruiker tekst kan invoeren, dit kan met het <input>-element of <textarea>-element.
+    Voeg een button toe aan de webpagina, die ervoor zorgt dat wanneer de gebruiker hierop klikt, de ingegeven tekst wordt gecodeerd naar de juiste coderingstekens, en toon deze op de webpagina.
+
+----------------------------------------------------------------------------------------------
+
+Wanneer alles naar behoren werkt voegen we nog wat extra functionaliteit toe.
+ We gaan een sleutel toevoegen die bestaat uit een matrix nummer ( 1, 2 of 3 ) en een cel nummer ( 1 t/m 9 ).
+ Afhankelijk van de waarden van deze sleutel zal de letter ‘a’ beginnen op deze ingegeven positie en de resterende alfabet tekens zullen verder worden ingevuld.
+ Wanneer de gebruiker 1 van deze waarden verandert zal de matrix worden aangepast naar de desbetreffende sleutel.
+
+
+Zie figuur: "sleutel_enigma.jpg"
+
+De letter “a” zal nu beginnen in matrix 2, positie 3, de rest van het alfabet wordt aangevuld.
+Voor de drop-down lijst waaruit de gebruiker kan kiezen kan je het <select>-element gebruiken.
+ https://www.w3schools.com/tags/tag_select.asp.
+ 
+Een voorbeeld van een dropdown-list met 3 opties
+
+<label for="cars">Kies een auto:</label>
+
+<select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="renault">Renault</option>
+  <option value="peugeot">Peugeot</option>
+</select>
+
+Binnen JavaScript kan je de geselecteerde optie op de volgende manier uitlezen
+
+const cars = document.getElementById("cars");
+// indexnummer van de geselecteerde optie
+const indexNummer = cars.selectedIndex;
+
+// HTMLOption element dat geselecteerd is
+let selectedOption = cars.options[cars.selectedIndex];
+
+// text van de geselecteerde optie
+const selectedText = selectedOption.text;
+// waarde van de geselecteerde optie
+const selectedValue = selectedOption.value;
+
