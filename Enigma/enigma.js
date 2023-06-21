@@ -15,6 +15,8 @@ function init () {
     // Next Steps: createKeyFields();
 }
 
+
+
 /* Global Variables */
 var alphabetArray = [];
 var matrixCellsArray = [];
@@ -73,6 +75,8 @@ function createInputFields () {
     // Create a Submit Button
     let submitBtn = inputField.appendChild(createInput('Submit'));
     submitBtn.addEventListener('click', submitInput);
+
+    // ERROR!! Only Default Value ATM
     submitBtn.textParameter = textInput.value;
 }
 
@@ -102,7 +106,12 @@ function createInput (inputType) {
     // Set Name Attribute with given Paramater + "Field"
     newInput.setAttribute('name', inputType+"Field");
     // Set Value Attribute with given Parameter
-    newInput.setAttribute('value', inputType);
+    if (inputType == 'button' || inputType == 'submit') {
+        newInput.setAttribute('value', inputType);
+    } else {
+        newInput.setAttribute('value', "SampleText");
+    }
+
     // Return the newly created Input Field
     return newInput;
 }
@@ -118,15 +127,56 @@ function createAlphabetArray () {
 
 
 /**
- * WHAT SHOULD IT DO:
- * Get the Text Value that has been Submitted
- * Find the individual Character of the Text Value in the Matrices
- * Get the Borders of the Character Positions within the Matrices
- * Return the Border Values to Display on Page
+ * 
  * @param {*} event - The Click Event on the SubmitButton
  */
 function submitInput (event) {
+
     let textToEncryptArray = Array.from(event.currentTarget.textParameter);
 
+    textToEncryptArray.forEach(char => {
+        let index = alphabetArray.indexOf(char.toUpperCase(), 0);
+        let foundCharStyle = window.getComputedStyle(matrixCellsArray[index]);
+
+        let borderStyle = foundCharStyle.getPropertyValue('border-Width');
+        console.log(matrixCellsArray[index].innerText+": "+borderStyle);
+        displayResult(borderStyle);
+
+        // let borderStyle = foundCharStyle.getPropertyValue('border');
+        // console.log(matrixCellsArray[index].innerText+": "+borderStyle);
+        // displayResult(borderStyle);
+
+        // let borderTopStyle = foundCharStyle.getPropertyValue('border-top');
+        // let borderRightStyle = foundCharStyle.getPropertyValue('border-right');
+        // let borderBottomStyle = foundCharStyle.getPropertyValue('border-bottom');
+        // let borderLeftStyle = foundCharStyle.getPropertyValue('border-left');
+        // // console.log(borderTopStyle+" "+borderRightStyle+" "+borderBottomStyle+" "+borderLeftStyle+" "+matrixCellsArray[index].innerText);
+        // displayResult(borderTopStyle, borderRightStyle, borderBottomStyle, borderLeftStyle);
+    });
+    
 }
 
+
+function displayResult (borderW) {
+    const output = document.getElementById('OutputField');
+    let outputDiv = document.createElement('div');
+    outputDiv.classList.add("outputDiv");
+
+    // outputDiv.style.setProperty('borderwidth', borderW, true);
+    outputDiv.style.setProperty('border-width', borderW);
+    // outputDiv.style.borderwidth = borderW;
+    // console.log(borderW);
+    output.appendChild(outputDiv);
+}
+
+// function displayResult (borderT, borderR, borderB, borderL) {
+//     const output = document.getElementById('OutputField');
+//     let outputDiv = document.createElement('div');
+//     outputDiv.classList.add("outputDiv");
+//     //outputDiv.style.border = newStyle;
+//     outputDiv.style.borderTop = borderT;
+//     outputDiv.style.borderRight = borderR;
+//     outputDiv.style.borderBottom = borderB;
+//     outputDiv.style.borderLeft = borderL;
+//     output.appendChild(outputDiv);
+// }
