@@ -187,12 +187,39 @@ function submitTextInput(/*event*/) {
  * IF Option ID = select3: Different Matrices; value1 = +9 value2 = +18
  * @param {*} event 
  */
+let newOffset = new Number;
 function submitOptionSelect(event) {
     let optionID = event.currentTarget.id;
     let optionValue = event.currentTarget.value;
     console.log("Changed: " + optionID + " Value: " + optionValue);
 
-    let newOffset = 0;
+    let newMatrixOffset;
+    let newCellOffset;
+
+    if (optionID == "matrix") {
+        newMatrixOffset = new Number;
+        // Matrix Changed ID
+        if (optionValue == "3") {
+            // Change to Last Matrix (offset with 18)
+            newMatrixOffset = Number(18);
+        } else if (optionValue == "2") {
+            // Change to Second Matrix (offset with 9)
+            newMatrixOffset = Number(9);
+        } else {
+            // Change to first Matrix (offset with 0)
+            newMatrixOffset = Number(0);
+        }
+    } else {
+        newCellOffset = new Number;
+        // Otherwise Cell Changed ID
+        if (optionValue != NaN) {
+            newCellOffset = Number(optionValue);
+        } else {
+            newCellOffset = 0;
+        }
+    }
+    newOffset = newMatrixOffset + newCellOffset;
+    console.log("new Offset:" + Number(newOffset));
 }
 
 
@@ -211,7 +238,7 @@ function clearDisplay() {
 
 
 /** Display Text Result
- * !!! NEEDS Matrix ID in InnerText
+ * 
  * @param {*} borderW 
  */
 function displayResult(borderW, id) {
